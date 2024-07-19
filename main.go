@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"Go-Distributed-FileSystem/internal/p2p"
+	"log"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	transport := p2p.NewTCPTransport(":3000")
+	if err := transport.ListenAndAccept(); err != nil {
+		log.Fatal(err)
+	}
+	select {}
 }

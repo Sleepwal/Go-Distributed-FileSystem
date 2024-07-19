@@ -6,6 +6,8 @@ type Peer interface {
 
 // Transport 处理节点之间的通信（使用tcp、UDP、WebSocket）
 type Transport interface {
-	ListenAddr() string
+	Addr() string
 	ListenAndAccept() error
+	Dial(string) error
+	Consume() <-chan RPC
 }
